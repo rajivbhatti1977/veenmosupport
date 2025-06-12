@@ -66,6 +66,7 @@ const ContactSection = () => {
               <h3 className="text-xl font-semibold text-card-foreground mb-3">
                 {option.title}
               </h3>
+              <p>{option.phoneNumber}</p>
               
               <p className="text-muted-foreground mb-4">
                 {option.description}

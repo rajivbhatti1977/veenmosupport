@@ -1,4 +1,3 @@
-
 import { MessageCircle, Mail, Phone, Clock } from 'lucide-react';
 
 const ContactSection = () => {
@@ -9,7 +8,7 @@ const ContactSection = () => {
       description: "Chat with our support team",
       availability: "Available 24/7",
       action: "Start Chat",
-      primary: true
+      primary: false
     },
     {
       icon: Mail,
@@ -25,9 +24,16 @@ const ContactSection = () => {
       description: "Speak with a representative",
       availability: "Mon-Fri, 9AM-6PM EST",
       action: "Call Now",
-      primary: false
+      primary: true,
+      phoneNumber: "+18555742442"
     }
   ];
+
+  const handleContactClick = (option: typeof contactOptions[0]) => {
+    if (option.phoneNumber) {
+      window.location.href = `tel:${option.phoneNumber}`;
+    }
+  };
 
   return (
     <section className="py-16 bg-background">
@@ -70,11 +76,13 @@ const ContactSection = () => {
                 {option.availability}
               </div>
               
-              <button className={`w-full py-3 px-6 rounded-lg font-semibold transition-colors ${
-                option.primary
-                  ? 'bg-blue-600 text-white hover:bg-blue-700'
-                  : 'bg-muted text-muted-foreground hover:bg-muted/80'
-              }`}>
+              <button 
+                onClick={() => handleContactClick(option)}
+                className={`w-full py-3 px-6 rounded-lg font-semibold transition-colors ${
+                  option.primary
+                    ? 'bg-blue-600 text-white hover:bg-blue-700'
+                    : 'bg-muted text-muted-foreground hover:bg-muted/80'
+                }`}>
                 {option.action}
               </button>
             </div>
